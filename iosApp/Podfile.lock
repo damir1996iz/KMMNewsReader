@@ -1,0 +1,25 @@
+PODS:
+  - shared (1.0)
+  - SQLite.swift (0.13.1):
+    - SQLite.swift/standard (= 0.13.1)
+  - SQLite.swift/standard (0.13.1)
+
+DEPENDENCIES:
+  - shared (from `../shared`)
+  - SQLite.swift
+
+SPEC REPOS:
+  trunk:
+    - SQLite.swift
+
+EXTERNAL SOURCES:
+  shared:
+    :path: "../shared"
+
+SPEC CHECKSUMS:
+  shared: 7b4d6aa8aa7ada5f9dae3229e2524d316cb9f063
+  SQLite.swift: 30f2cdb09627181d472e55c4bc6b3b161f28de33
+
+PODFILE CHECKSUM: 127c62b60bba4f8f280ca6b9ae2fee1e119921d6
+
+COCOAPODS: 1.11.2

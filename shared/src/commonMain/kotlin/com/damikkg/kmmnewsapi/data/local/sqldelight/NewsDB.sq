@@ -1,0 +1,36 @@
+CREATE TABLE IF NOT EXISTS news (
+        id INTEGER PRIMARY KEY,
+        author TEXT,
+        content TEXT,
+        imageUrl TEXT,
+        readMoreUrl TEXT,
+        title TEXT,
+        url TEXT,
+        timestamp INTEGER,
+        category TEXT
+);
+
+CREATE UNIQUE INDEX newsTitleIndex ON news(title);
+
+selectAllNews:
+SELECT * FROM news;
+
+selectNewsByCategory:
+SELECT * FROM news WHERE category = (?);
+
+selectNewsByCategoryOrdered:
+SELECT * FROM news WHERE category = (?) ORDER BY timestamp DESC;
+
+insertNews:
+INSERT OR REPLACE INTO news (
+    author,
+    content,
+    imageUrl,
+    readMoreUrl,
+    title,
+    url,
+    timestamp,
+    category)
+    VALUES (?,?,?,?,?,?,?,?);
+
+  

@@ -12,6 +12,7 @@ import io.ktor.client.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
+import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
@@ -27,7 +28,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     }
 
 //IOS
-fun initKoin() = initKoin {}
+fun initKoin():KoinApplication = initKoin {}
 
 val repoModule = module {
     single {

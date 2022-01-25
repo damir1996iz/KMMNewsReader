@@ -60,7 +60,9 @@ fun NewsScreen(
         }
         is NewsLoadingState.Error -> {
             Column(modifier = Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-                Text(text = "Loading error. Nothing found in cache")
+                Text(text = "Nothing found in cache.\n " +
+                        "Select another Category, or check internet connection",
+                    textAlign = TextAlign.Center)
             }
         }
     }

@@ -60,6 +60,6 @@ val repoModule = module {
 
 val viewModelModule = module {
     single {
-        NewsViewModel(get())
+        NewsViewModel()
     }
 }

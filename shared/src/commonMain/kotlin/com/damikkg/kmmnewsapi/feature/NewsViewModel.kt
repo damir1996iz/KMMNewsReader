@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
 sealed class NewsLoadingState
 {
@@ -16,7 +18,8 @@ sealed class NewsLoadingState
     object Error : NewsLoadingState()
 }
 
-class NewsViewModel (private val repo:INewsRepo) : SharedViewModel(){
+class NewsViewModel : SharedViewModel(), KoinComponent{
+    private val repo:INewsRepo by inject ()
     val currentNewsType = MutableStateFlow(NewsTypes.Cached)
 
     private val newsFlow = MutableStateFlow<NewsLoadingState>(NewsLoadingState.Success(emptyList()))

@@ -142,5 +142,8 @@ fun timestampToString(value:Long) : String
 @Composable
 fun NewsCardPreview()
 {
-//    NewsCard(news = News("damir", "text of news", "", "", "title", "", 10000, "science"))
+    NewsCard(news = News("damir", "text of news", "", "", "title", "", 10000, "science"))
+    {
+
+    }
 }

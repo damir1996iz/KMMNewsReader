@@ -2,7 +2,7 @@
 .gradle
 /local.properties
 .idea
-.DS_Store
+*.DS_Store*
 /build
 */build
 /captures
@@ -30,6 +30,7 @@ gradle-app.setting
 *.xcscheme
 xcschememanagement.plist
 *.xcbkptlist
+*._*
 
 .idea/
 build/

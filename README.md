@@ -1,5 +1,5 @@
 # KMM News API reader
-## Mutiplatform(iOS/Android) news reader with offline cache example
+## Multiplatform(iOS/Android) news reader with offline cache example
 
 Kotlin Multiplatform Mobile inshorts News API reader with offline cache support.
 Feel free to criticize and improve project via github.
@@ -20,8 +20,8 @@ Feel free to criticize and improve project via github.
 
 ## TODO List
 - Add tests on all layers
-- Add Paginaton (Multiplatform?)
-- Check network state when cache is emtpy
+- Add Pagination (Multiplatform?)
+- Check network state when cache is empty
 - Add SQLCipher to encrypt local database (only for fun:) )
 - Dark theme, beautiful design and etc...
 

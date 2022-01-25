@@ -5,6 +5,7 @@ import com.damikkg.kmmnewsapi.data.remote.responses.NewsResponse
 import com.damikkg.kmmnewsapi.data.remote.responses.toNews
 import com.damikkg.kmmnewsapi.domain.models.News
 import com.damikkg.kmmnewsapi.domain.models.NewsTypes
+import io.github.aakira.napier.Napier
 import io.ktor.client.*
 import io.ktor.client.request.*
 
@@ -27,6 +28,7 @@ class RemoteSourceImp (private val client: HttpClient) : IRemoteSource
             }
         } catch (e:Exception)
         {
+            Napier.e(e.toString())
             emptyList()
         }
     }

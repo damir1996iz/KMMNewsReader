@@ -2,14 +2,12 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    let checker = CheckerLong()
     @State var str = ""
+    
+    @ObservedObject var viewModel = NewsViewModel()
     
 	var body: some View {
 		Text(str)
-            .onAppear(perform: {
-                str = String(checker.check())
-            })
 	}
 }
 

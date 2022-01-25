@@ -13,7 +13,7 @@ class NewsRepoImp (
         ): INewsRepo
 {
     override suspend fun getNewsByCategory(newsType: NewsTypes): List<News> {
-        if (newsType == NewsTypes.All)
+        if (newsType == NewsTypes.Cached)
         {
             return localCache.getAllNews()
         }

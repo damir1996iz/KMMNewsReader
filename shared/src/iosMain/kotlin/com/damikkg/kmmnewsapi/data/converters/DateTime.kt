@@ -12,7 +12,7 @@ actual fun dateTimeStringsToLong(date:String, time:String):Long
     val formatter = NSDateFormatter()
     formatter.locale = NSLocale("us")
     formatter.dateFormat = "dd MMM yyyy hh:mm a"
-    val nsDate:NSDate? = formatter.dateFromString(formattedStr)
+    val nsDate:NSDate = formatter.dateFromString(formattedStr)
 
     return nsDate?.timeIntervalSince1970?.toLong() ?: 0
 }

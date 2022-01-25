@@ -13,10 +13,7 @@ CREATE TABLE IF NOT EXISTS news (
 CREATE UNIQUE INDEX newsTitleIndex ON news(title);
 
 selectAllNews:
-SELECT * FROM news;
-
-selectNewsByCategory:
-SELECT * FROM news WHERE category = (?);
+SELECT * FROM news ORDER BY timestamp DESC;
 
 selectNewsByCategoryOrdered:
 SELECT * FROM news WHERE category = (?) ORDER BY timestamp DESC;

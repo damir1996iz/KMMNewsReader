@@ -2,6 +2,7 @@ package com.damikkg.kmmnewsapi.android.presentation
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,6 +13,7 @@ import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,7 +26,9 @@ import androidx.core.content.ContextCompat.startActivity
 import coil.compose.rememberImagePainter
 import com.damikkg.kmmnewsapi.domain.models.News
 import com.damikkg.kmmnewsapi.domain.models.NewsTypes
+import com.damikkg.kmmnewsapi.feature.NewsLoadingState
 import com.damikkg.kmmnewsapi.feature.NewsViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -33,26 +37,31 @@ fun NewsScreen(
     newsViewModel: NewsViewModel
 )
 {
-    val news = newsViewModel.news.collectAsState(initial = emptyList())
-
+    val news by newsViewModel.news.collectAsState()
     val context = LocalContext.current
 
-    if(news.value.isNotEmpty())
+    when(news)
     {
-        Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-            news.value.forEach {
-                NewsCard(news = it)
-                {
-                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.readMoreUrl))
-                    startActivity(context, intent, null)
+        is NewsLoadingState.Success -> {
+            Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+                (news as NewsLoadingState.Success).result.forEach {
+                    NewsCard(news = it)
+                    {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it.readMoreUrl))
+                        startActivity(context, intent, null)
+                    }
                 }
             }
         }
-    }
-    else
-    {
-        Column(modifier = Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
-            LinearProgressIndicator()
+        is NewsLoadingState.Loading -> {
+            Column(modifier = Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
+                LinearProgressIndicator()
+            }
+        }
+        is NewsLoadingState.Error -> {
+            Column(modifier = Modifier.fillMaxSize(), Arrangement.Center, Alignment.CenterHorizontally) {
+                Text(text = "Loading error. Nothing found in cache")
+            }
         }
     }
 
@@ -118,10 +127,11 @@ fun NewsCard(news:News, onReadMoreClicked:()->Unit)
 fun timestampToString(value:Long) : String
 {
     return try {
-        val sdf = SimpleDateFormat("HH:mm MM.dd.yyyy", Locale.US)
-        sdf.format(Date(value))
+        SimpleDateFormat("HH:mm dd.MM.yyyy", Locale.US)
+            .format(Date(value))
     } catch (e:Exception)
     {
+        Log.e("NewsScreen",e.toString())
         "00:00 01.01.1900"
     }
 }

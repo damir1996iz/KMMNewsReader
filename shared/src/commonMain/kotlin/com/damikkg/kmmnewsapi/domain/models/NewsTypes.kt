@@ -7,5 +7,5 @@ enum class NewsTypes (val path:String, val desc:String)
     Business("business", "Business news"),
     Sports("sports", "Sport news"),
     Politics("politics", "Politic news"),
-    Sciense("science", "Sciense news")
+    Science("science", "Science news")
 }

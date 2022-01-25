@@ -32,9 +32,11 @@ kotlin {
                 implementation (Libraries.Common.kotlinxCoroutinesCore)
                 implementation (Libraries.SqlDelight.sqlDelightCoroutinesPlugin)
                 implementation (Libraries.Ktor.ktorCore)
+                implementation (Libraries.Ktor.ktorLogging)
                 implementation (Libraries.Ktor.ktorSerialization)
                 implementation (Libraries.Common.kotlinxDateTime)
                 implementation (Libraries.Common.napier)
+                implementation (Libraries.Common.logback)
             }
         }
         val commonTest by getting {

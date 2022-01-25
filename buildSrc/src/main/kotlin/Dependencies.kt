@@ -34,6 +34,8 @@ object Versions {
 
     const val coil = "1.4.0"
     const val napierVersion = "2.3.0"
+
+    const val logback = "1.2.10"
 }
 
 object Libraries {
@@ -59,6 +61,7 @@ object Libraries {
 
     object Ktor {
         const val ktorCore          = "io.ktor:ktor-client-core:${Versions.ktor}"
+        const val ktorLogging       = "io.ktor:ktor-client-logging:${Versions.ktor}"
         const val ktorSerialization = "io.ktor:ktor-client-serialization:${Versions.ktor}"
         const val ktorAndroid       = "io.ktor:ktor-client-android:${Versions.ktor}"
         const val ktorIos           = "io.ktor:ktor-client-ios:${Versions.ktor}"
@@ -83,6 +86,7 @@ object Libraries {
         const val kotlinxDateTime = "org.jetbrains.kotlinx:kotlinx-datetime:${Versions.kotlinxDateTime}"
 
         const val napier = "io.github.aakira:napier:${Versions.napierVersion}"
+        const val logback = "ch.qos.logback:logback-classic:${Versions.logback}"
     }
 
     object Android {

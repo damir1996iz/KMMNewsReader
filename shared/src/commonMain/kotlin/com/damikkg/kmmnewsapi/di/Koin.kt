@@ -11,6 +11,7 @@ import com.damikkg.kmmnewsapi.feature.NewsViewModel
 import io.ktor.client.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.logging.*
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
@@ -37,6 +38,9 @@ val repoModule = module {
                     ignoreUnknownKeys = true
                 }
                 serializer = KotlinxSerializer(json)
+            }
+            install(Logging) {
+                level = LogLevel.ALL
             }
         }
     }

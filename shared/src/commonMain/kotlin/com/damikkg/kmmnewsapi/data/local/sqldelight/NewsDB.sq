@@ -30,4 +30,9 @@ INSERT OR REPLACE INTO news (
     category)
     VALUES (?,?,?,?,?,?,?,?);
 
-  
+selectNewsByCategoryCount:
+SELECT COUNT(*) FROM news WHERE category = (?);
+
+selectNewsByCategoryPaging:
+SELECT * FROM news WHERE category = (?) ORDER BY timestamp DESC LIMIT :count, :offset;
+

@@ -6,8 +6,7 @@ Feel free to criticize and improve project via github.
 
 ## Screenshots
 
-![alt text](./android.png)
-![alt text](./ios.png)
+![android image](./android.png)![ios image](./ios.png)
 
 ## Features
 - Fetch news from https://inshortsapi.vercel.app/ by Ktor

@@ -17,18 +17,19 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
 import coil.compose.rememberImagePainter
+import coil.imageLoader
 import com.damikkg.kmmnewsapi.domain.models.News
-import com.damikkg.kmmnewsapi.domain.models.NewsTypes
 import com.damikkg.kmmnewsapi.feature.NewsLoadingState
 import com.damikkg.kmmnewsapi.feature.NewsViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import java.text.SimpleDateFormat
 import java.util.*
 

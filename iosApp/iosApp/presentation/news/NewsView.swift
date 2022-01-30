@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 import shared
 
 struct NewsView: View {
@@ -21,7 +22,6 @@ struct NewsView: View {
                 {
                     value in
                     NewsCard(news: value)
-                        .padding()
                 }
             }
         }
@@ -39,33 +39,53 @@ struct NewsCard: View {
     
     var body: some View
     {
-        ZStack
+        VStack
         {
-            RoundedRectangle(cornerRadius: 5, style: .continuous)
-                .fill(Color.white)
-                .clipped()
-                .shadow(radius: 4, x: 6, y: 7)
-            VStack
+            CachedAsyncImage(url: URL(string: news.imageUrl)) { image in
+                image.resizable().scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(height: 150, alignment: .center)
+                
+            Text(news.title)
+                .bold()
+            Text(news.content)
+            HStack
             {
-                AsyncImage(url: URL(string: news.imageUrl)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(height: 200)
-                .padding()
-                    
-                Text(news.title)
-                    .bold()
-                    .padding()
-                Text(news.content)
-                    .padding()
-                HStack
+                ZStack
                 {
-                    
+                    RoundedRectangle(cornerRadius: 0.0)
+                        .fill(Color.black)
+                        .frame(width: 150.0, height: 30.0)
+                    Text(news.author)
+                        .font(.system(size: 16.0))
+                        .foregroundColor(Color.white)
+                        .padding()
+                }
+                Spacer()
+                if(news.readMoreUrl?.isEmpty == false)
+                {
+                    let urlStr = (news.readMoreUrl ?? "").addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                    ZStack
+                    {
+                        RoundedRectangle(cornerRadius: 0.0)
+                            .fill(Color.blue)
+                            .frame(width: 100.0, height: 30.0)
+                            Link(destination:URL(string: urlStr)!)
+                            {
+                                Text("Read more")
+                                    .font(.system(size: 16.0))
+                                    .foregroundColor(Color.white)
+                                    .padding()
+                            }
+                    }
                 }
             }
-            .padding()
+            .frame(height: 35.0)
         }
+        .padding()
+        .overlay(RoundedRectangle(cornerRadius: 5, style: .continuous)
+                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1.0))
     }
 }

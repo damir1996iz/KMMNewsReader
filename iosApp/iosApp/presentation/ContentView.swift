@@ -78,15 +78,42 @@ struct CategorySelectView:View {
     
     var body: some View
     {
-        VStack
+        ScrollView
         {
-            ForEach(0..<types.size, id:\.self)
+            VStack
             {
-                index in
-                Button(types.get(index: index)?.desc ?? "", action: {
-                    onItemClicked(types.get(index: index)!)
-                })
+                ForEach(0..<types.size, id:\.self)
+                {
+                    index in
+                    CategoryCard(newsType: types.get(index: index)!, onClicked: {
+                        onItemClicked(types.get(index: index)!)
+                    })
+                }
             }
+        }
+    }
+}
+
+struct CategoryCard : View {
+    var newsType:NewsTypes
+    var onClicked:()->Void
+    
+    var body: some View
+    {
+        ZStack
+        {
+            RoundedRectangle(cornerRadius: 5, style: .continuous)
+                .fill(Color.white)
+                .clipped()
+                .shadow(radius: 4, x: 6, y: 7)
+            VStack
+            {
+                Text(newsType.desc)
+                    .padding()
+            }
+        }
+        .onTapGesture {
+            onClicked()
         }
     }
 }

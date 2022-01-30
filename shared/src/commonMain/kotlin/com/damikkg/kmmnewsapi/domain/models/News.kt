@@ -7,7 +7,7 @@ data class News(
     val author:String,
     val content:String,
     val imageUrl:String,
-    val readMoreUrl:String,
+    val readMoreUrl:String?,
     val title:String,
     val url:String,
     val timestamp:Long,

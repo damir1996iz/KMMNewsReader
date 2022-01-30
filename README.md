@@ -6,8 +6,8 @@ Feel free to criticize and improve project via github.
 
 ## Screenshots
 
-![alt text](./android.png = 800x480)
-![alt text](./ios.png = 800x480)
+![alt text](./android.png)
+![alt text](./ios.png)
 
 ## Features
 - Fetch news from https://inshortsapi.vercel.app/ by Ktor

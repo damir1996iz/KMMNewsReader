@@ -1,8 +1,13 @@
 # KMM News API reader
 ## Multiplatform(iOS/Android) news reader with offline cache example
 
-Kotlin Multiplatform Mobile inshorts News API reader with offline cache support.
+Kotlin Multiplatform Mobile News API reader with offline cache support.
 Feel free to criticize and improve project via github.
+
+##Screenshots
+
+![alt text](./android.png)
+![alt text](./ios.png)
 
 ## Features
 - Fetch news from https://inshortsapi.vercel.app/ by Ktor
@@ -11,7 +16,7 @@ Feel free to criticize and improve project via github.
 ## Stack
 - [KMM] - for code sharing (iOS/Android)
 - [Ktor] (with Json and Logging features) - to networking
-- [SQLDelight] - to offline data chacing via SQLite local database
+- [SQLDelight] - to offline data caching via SQLite local database
 - [Koin] - for DI
 - [Napier] - for logging
 - [SwiftUI/Jetpack compose] - platforms UI

@@ -37,6 +37,15 @@ struct NewsView_Previews: PreviewProvider {
 struct NewsCard: View {
     var news:News
     
+    let dateFormatter = DateFormatter()
+    
+    init(news: News)
+    {
+        self.news = news
+        
+        dateFormatter.dateFormat = "HH:mm dd.MM.yyyy"
+    }
+    
     var body: some View
     {
         VStack
@@ -83,6 +92,12 @@ struct NewsCard: View {
                 }
             }
             .frame(height: 35.0)
+            HStack
+            {
+                Text(dateFormatter.string(from: Date(timeIntervalSince1970: Double(news.timestamp))))
+                    .foregroundColor(Color.gray)
+                Spacer()
+            }
         }
         .padding()
         .overlay(RoundedRectangle(cornerRadius: 5, style: .continuous)

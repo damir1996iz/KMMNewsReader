@@ -4,10 +4,6 @@
 Kotlin Multiplatform Mobile News API reader with offline cache support.
 Feel free to criticize and improve project via github.
 
-## Screenshots
-
-![android image](./android.png)![ios image](./ios.png)
-
 ## Features
 - Fetch news from https://inshortsapi.vercel.app/ by Ktor
 - Save fetched news to local SQLDelight database
@@ -21,6 +17,10 @@ Feel free to criticize and improve project via github.
 - [SwiftUI/Jetpack compose] - platforms UI
 - [MVVM arch]
 - [Kotlin/Native Flow]
+
+## Screenshots
+
+![android image](./android.png)![ios image](./ios.png)
 
 ## TODO List
 - Add tests on all layers
